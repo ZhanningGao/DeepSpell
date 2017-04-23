@@ -65,7 +65,7 @@ DIGEST = sha256(json.dumps(CONFIG.__dict__, sort_keys=True)).hexdigest()
 MIN_INPUT_LEN = 5
 AMOUNT_OF_NOISE = 0.2 / CONFIG.max_input_len
 CHARS = list("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ .")
-PADDING = "☕"
+PADDING = "."
 
 DATA_FILES_PATH = "~/Downloads/data"
 DATA_FILES_FULL_PATH = os.path.expanduser(DATA_FILES_PATH)
@@ -287,6 +287,7 @@ def generator(file_name):
     batch_of_answers = []
     while True:
         with open(file_name) as answers:
+#			print 'open %s'%(file_name)
             for answer in answers:
                 batch_of_answers.append(answer.strip().decode('utf-8'))
                 if len(batch_of_answers) == CONFIG.batch_size:
@@ -572,14 +573,14 @@ def train_speller(from_file=None):
     itarative_train(model)
 
 if __name__ == '__main__':
-#     download_the_news_data()
-#     uncompress_data()
-#     preprocesses_data_clean()
-#     preprocesses_data_analyze_chars()
-#     preprocesses_data_filter()
-#     preprocesses_split_lines() --- Choose this step or:
-#     preprocesses_split_lines2()
-#     preprocesses_split_lines4()
-#     preprocess_partition_data()
-#     train_speller(os.path.join(DATA_FILES_FULL_PATH, "keras_spell_e15.h5"))
-    train_speller()
+#    download_the_news_data()
+#    uncompress_data()
+#    preprocesses_data_clean()
+#    preprocesses_data_analyze_chars()
+#    preprocesses_data_filter()
+#    preprocesses_split_lines()
+#    preprocesses_split_lines2()
+#    preprocesses_split_lines4()
+#    preprocess_partition_data()
+     train_speller(os.path.join(DATA_FILES_FULL_PATH, "keras_spell_e15.h5"))
+#    train_speller()
